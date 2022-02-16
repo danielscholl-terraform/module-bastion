@@ -27,6 +27,12 @@ variable "resource_group_name" {
   type        = string
 }
 
+variable "resource_tags" {
+  description = "Map of tags to apply to taggable resources in this module. By default the taggable resources are tagged with the name defined above and this map is merged in"
+  type        = map(string)
+  default     = {}
+}
+
 variable "public_ip_address_allocation" {
   description = "Defines how an IP address is assigned. Options are Static or Dynamic."
   type        = string

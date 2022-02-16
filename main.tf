@@ -19,6 +19,8 @@ resource "azurerm_public_ip" "pip" {
   allocation_method   = var.public_ip_address_allocation
   sku                 = "Standard"
   domain_name_label   = var.domain_name_label != null ? var.domain_name_label : format("gw%s%s", lower(replace(local.name, "/[[:^alnum:]]/", "")), random_string.random.result)
+
+  tags = var.resource_tags
 }
 
 resource "azurerm_bastion_host" "main" {
@@ -32,4 +34,6 @@ resource "azurerm_bastion_host" "main" {
     subnet_id            = var.vnet_subnet_id
     public_ip_address_id = azurerm_public_ip.pip.id
   }
+
+  tags = var.resource_tags
 }
