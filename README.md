@@ -40,8 +40,8 @@ module "virtual_network" {
 
 module "bastion_host" {
   source     = "git::https://github.com/danielscholl-terraform/module-bastion?ref=v1.0.0"
-  source              = "../"
   depends_on          = [module.virtual_network]
+  
   name                = "iac-terraform-bastion-${module.resource_group.random}"
   resource_group_name = module.resource_group.name
   vnet_subnet_id      = module.virtual_network.subnets["AzureBastionSubnet"].id
