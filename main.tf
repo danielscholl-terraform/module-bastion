@@ -13,7 +13,7 @@ data "azurerm_resource_group" "main" {
 }
 
 resource "azurerm_public_ip" "pip" {
-  name                = (var.name == null ? "${local.name}-ip" : lower(var.name))
+  name                = (var.name == null ? "${local.name}-bastion-ip" : lower(var.name))
   resource_group_name = data.azurerm_resource_group.main.name
   location            = data.azurerm_resource_group.main.location
   allocation_method   = var.public_ip_address_allocation
