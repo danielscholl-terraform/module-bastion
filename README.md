@@ -54,5 +54,26 @@ module "bastion_host" {
 ```
 
 <!--- BEGIN_TF_DOCS --->
+## Providers
 
+| Name | Version |
+|------|---------|
+| azurerm | >= 2.90.0 |
+| random | n/a |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:-----:|
+| domain\_name\_label | Label for the Domain Name. Will be used to make up the FQDN. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system | `any` | n/a | yes |
+| name | The name of the Resource Group. | `string` | n/a | yes |
+| names | Names to be applied to resources (inclusive) | <pre>object({<br>    environment = string<br>    location    = string<br>    product     = string<br>  })</pre> | <pre>{<br>  "environment": "tf",<br>  "location": "eastus2",<br>  "product": "iac"<br>}</pre> | no |
+| public\_ip\_address\_allocation | Defines how an IP address is assigned. Options are Static or Dynamic. | `string` | `"Static"` | no |
+| resource\_group\_name | The name of an existing resource group. | `string` | n/a | yes |
+| sku | Defines the service SKU to use for the Bastion Host. Options are Basic or Standard. | `string` | `"Basic"` | no |
+| vnet\_subnet\_id | The subnet id of the virtual network where the virtual machines will reside. | `string` | n/a | yes |
+
+## Outputs
+
+No output.
 <!--- END_TF_DOCS --->
