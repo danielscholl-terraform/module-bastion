@@ -70,6 +70,7 @@ module "bastion_host" {
 | names | Names to be applied to resources (inclusive) | <pre>object({<br>    environment = string<br>    location    = string<br>    product     = string<br>  })</pre> | <pre>{<br>  "environment": "tf",<br>  "location": "eastus2",<br>  "product": "iac"<br>}</pre> | no |
 | public\_ip\_address\_allocation | Defines how an IP address is assigned. Options are Static or Dynamic. | `string` | `"Static"` | no |
 | resource\_group\_name | The name of an existing resource group. | `string` | n/a | yes |
+| resource\_tags | Map of tags to apply to taggable resources in this module. By default the taggable resources are tagged with the name defined above and this map is merged in | `map(string)` | `{}` | no |
 | sku | Defines the service SKU to use for the Bastion Host. Options are Basic or Standard. | `string` | `"Basic"` | no |
 | vnet\_subnet\_id | The subnet id of the virtual network where the virtual machines will reside. | `string` | n/a | yes |
 
